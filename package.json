@@ -1,0 +1,31 @@
+{
+  "name": "recipes-api",
+  "version": "1.0.0",
+  "description": "Recipes-api 🍏",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariaRez/recipes-api.git"
+  },
+  "author": "MariaRez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MariaRez/recipes-api/issues"
+  },
+  "homepage": "https://github.com/MariaRez/recipes-api#readme",
+  "dependencies": {
+    "eslint": "^8.37.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
