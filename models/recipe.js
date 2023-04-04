@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { imageValidateMessage, pageLinkValidateMessage, portionsValidateMessage } = require('../utils/constants');
 
 const recipeSchema = new mongoose.Schema({
   title: {
@@ -15,13 +16,23 @@ const recipeSchema = new mongoose.Schema({
     // адрес страницы для перехода
     type: String,
     required: true,
-    // добавить валидацию для ссылки
+    validate: {
+      validator(v) {
+        return /http[s]?:\/\/(?:www\.)?([\w-]+\.)+\/?\S*$/.test(v);
+      },
+      message: pageLinkValidateMessage,
+    },
   },
   image: {
     // ссылка на изображение
     type: String,
     required: true,
-    // добавить валидацию для ссылки
+    validate: {
+      validator(v) {
+        return /http[s]?:\/\/(?:www\.)?([\w-]+\.)+\/?\S*$/.test(v);
+      },
+      message: imageValidateMessage,
+    },
   },
   descriptionForRecipe: {
     // описание рецепта на странице
@@ -31,6 +42,12 @@ const recipeSchema = new mongoose.Schema({
   portions: {
     type: Number,
     required: true,
+    validate: {
+      validator(v) {
+        return v < 13;
+      },
+      message: portionsValidateMessage,
+    },
   },
   nutrition: [ // нутриенты
     {
@@ -74,7 +91,7 @@ const recipeSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
-      stepr: { // описание действия
+      step: { // описание действия
         type: String,
         required: true,
       },
