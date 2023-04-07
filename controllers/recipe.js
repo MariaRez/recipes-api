@@ -1,10 +1,7 @@
 const Recipe = require('../models/recipe');
 
-module.exports.getRecipe = (req, res) => {
+module.exports.getRecipes = (req, res, next) => { // возращает все рецепты
   Recipe.find({})
     .then((recipes) => res.status(200).send({ data: recipes }))
-    .catch((err) => {
-      // eslint-disable-next-line no-console
-      console.log(err);
-    });
+    .catch(next);
 };
